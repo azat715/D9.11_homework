@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 
 
+
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -13,7 +15,7 @@ class Category(models.Model):
         return self.name
 
 class Post(models.Model):  
-    title = models.CharField(max_length=255)  
+    title = models.CharField(max_length=255, unique=True)  
     slug = models.SlugField  
     status = models.CharField(max_length=10, choices=[('D', 'draft'), ('P', 'published')])  
     content = models.TextField()
@@ -24,3 +26,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
