@@ -1,8 +1,7 @@
-from django.db import models
-from django.utils import timezone
-from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
-
+from django.db import models
+from django.template.defaultfilters import slugify
+from django.utils import timezone
 
 
 class Category(models.Model):
@@ -14,12 +13,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Post(models.Model):  
-    title = models.CharField(max_length=255, unique=True)  
-    slug = models.SlugField  
-    status = models.CharField(max_length=10, choices=[('D', 'draft'), ('P', 'published')])  
+
+class Post(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    slug = models.SlugField
+    status = models.CharField(
+        max_length=10, choices=[("D", "draft"), ("P", "published")]
+    )
     content = models.TextField()
-    updated = models.DateTimeField(default=timezone.now)  
+    updated = models.DateTimeField(default=timezone.now)
     publication_date = models.DateTimeField(default=timezone.now)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     author = models.ForeignKey(User, null=True, default=None, on_delete=models.CASCADE)
