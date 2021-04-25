@@ -73,7 +73,7 @@ def test_post_create(user_client):
 """
 @pytest.mark.django_db
 def test_all_post(content, api_client):
-    response = api_client.get(reverse('app:post-list', current_app='app'))
+    response = api_client.get(reverse('app:posts', current_app='app'))
     posts = Post.objects.all()
     serializer = PostSerializer(posts, many=True)
     assert response.data == serializer.data
