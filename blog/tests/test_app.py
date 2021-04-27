@@ -90,7 +90,7 @@ def test_first_post(content, api_client):
 
 @pytest.mark.django_db
 def test_categories_posts(content, api_client):
-    response = api_client.get(reverse("app:categories", current_app="app"))
+    response = api_client.get(reverse("app:cat-list", current_app="app"))
     categories = Category.objects.all()
     serializer = CatAndPostsSerializer(categories, many=True)
     assert response.data == serializer.data
@@ -99,10 +99,19 @@ def test_categories_posts(content, api_client):
 
 @pytest.mark.django_db
 def test_cat_and_post_create(cat_posts_data, api_client):
-    response = api_client.post(reverse("app:categories"), data=json.dumps(cat_posts_data), content_type='application/json')
+    response = api_client.post(reverse("app:cat-list"), data=json.dumps(cat_posts_data), content_type='application/json')
     assert response.data == {'id': 3, 'name': 'Excepteur sint occaecat'}
     assert response.status_code == 201
-    
+
+
+@pytest.mark.django_db
+def test_cat_and_post_retrieve(api_client):
+    response = api_client.get(reverse("app:cat-detail", args=[1]))
+    cat = Category.objects.first()
+    serializer = CatAndPostsSerializer(cat)
+    assert response.data == serializer.data
+    assert response.status_code == 200
+
 
 """
 тестирование serializers
@@ -116,4 +125,14 @@ def test_cat_post_serializer(cat_posts_data):
         serializer.save()
     except Exception as e:
         pytest.fail("CatAndPostsSerializer произошла ошибка при save() \n {}".format(e))
+        pytest.fail(e)
+
+
+@pytest.mark.django_db
+def test_cat_post_serializer_first(cat_posts_data):
+    try:
+        cat = Category.objects.first()
+        serializer = CatAndPostsSerializer(cat)
+    except Exception as e:
+        pytest.fail("CatAndPostsSerializer произошла ошибка при serialize \n {}".format(e))
         pytest.fail(e)
