@@ -100,7 +100,9 @@ def test_categories_posts(content, api_client):
 @pytest.mark.django_db
 def test_cat_and_post_create(cat_posts_data, api_client):
     response = api_client.post(reverse("app:cat-list"), data=json.dumps(cat_posts_data), content_type='application/json')
-    assert response.data == {'id': 3, 'name': 'Excepteur sint occaecat'}
+    obj = Category.objects.get(pk=response.data["id"])
+    serializer = CatAndPostsSerializer(obj)
+    assert response.data == serializer.data
     assert response.status_code == 201
 
 
