@@ -1,0 +1,66 @@
+[{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$260000$6D6DcvUZbn1PWdBm9cvoj9$5UwnBvACzNu5+N6YsY30g9znT/qcLVI9bo8QtlneB2Y=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "test_user",
+        "first_name": "Normal",
+        "last_name": "User",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2021-04-25T14:59:41.720Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}, {
+    "model": "app.category",
+    "pk": 1,
+    "fields": {
+        "name": "Lorem ipsum dolor sit amet"
+    }
+}, {
+    "model": "app.category",
+    "pk": 2,
+    "fields": {
+        "name": "consectetur adipiscing elit"
+    }
+}, {
+    "model": "app.post",
+    "pk": 1,
+    "fields": {
+        "title": "Lorem ipsum dolor sit amet,",
+        "status": "D",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "updated": "2021-04-25T14:59:41.858Z",
+        "publication_date": "2021-04-25T14:59:41.858Z",
+        "category": 1,
+        "author": 1
+    }
+}, {
+    "model": "app.post",
+    "pk": 2,
+    "fields": {
+        "title": "cillum dolore eu fugiat nulla pariatur",
+        "status": "P",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "updated": "2021-04-25T14:59:41.858Z",
+        "publication_date": "2021-04-25T14:59:41.858Z",
+        "category": 2,
+        "author": 1
+    }
+}, {
+    "model": "app.post",
+    "pk": 3,
+    "fields": {
+        "title": "Duis aute irure dolor",
+        "status": "D",
+        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "updated": "2021-04-25T14:59:41.859Z",
+        "publication_date": "2021-04-25T14:59:41.859Z",
+        "category": 1,
+        "author": 1
+    }
+}]

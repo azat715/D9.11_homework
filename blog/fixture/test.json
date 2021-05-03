@@ -1,0 +1,20 @@
+{
+    "posts": [
+        {
+            "title": "cillum dolore eu fugiat nulla pariatur2",
+            "status": "P",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "title": "cillum dolore eu fugiat nulla pariatur3",
+            "status": "P",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+            "title": "cillum dolore eu fugiat nulla pariatur4",
+            "status": "P",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+    ],
+    "name": "consectetur adipiscing elit2"
+}
